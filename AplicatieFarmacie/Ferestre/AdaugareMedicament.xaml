@@ -1,0 +1,125 @@
+﻿<Window x:Class="AplicatieFarmacie.Ferestre.AdaugareMedicament"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Adauga Medicament Nou"
+        Height="530" Width="440"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#444"/>
+            <Setter Property="Margin" Value="0,8,0,3"/>
+        </Style>
+        <Style x:Key="Camp" TargetType="TextBox">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="#BDBDBD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+        <Style x:Key="Btn" TargetType="Button">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="22,9"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.88"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titlu -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,12">
+            <TextBlock Text="Adauga Medicament Nou" FontSize="17" FontWeight="Bold" Foreground="#1B5E20"/>
+            <Separator Background="#C8E6C9" Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <!-- Campuri formular -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Denumire *" Style="{StaticResource Label}"/>
+                <TextBox x:Name="TxtDenumire" Style="{StaticResource Camp}"/>
+
+                <TextBlock Text="Producator *" Style="{StaticResource Label}"/>
+                <TextBox x:Name="TxtProducator" Style="{StaticResource Camp}"/>
+
+                <TextBlock Text="Categorie *" Style="{StaticResource Label}"/>
+                <ComboBox x:Name="CmbCategorie" FontSize="13" Padding="8,6"
+                          BorderBrush="#BDBDBD" BorderThickness="1" IsEditable="True">
+                    <ComboBoxItem Content="Analgezic"/>
+                    <ComboBoxItem Content="Antibiotic"/>
+                    <ComboBoxItem Content="Antiinflamator"/>
+                    <ComboBoxItem Content="Antihistaminic"/>
+                    <ComboBoxItem Content="Antiviral"/>
+                    <ComboBoxItem Content="Gastric"/>
+                    <ComboBoxItem Content="Cardiac"/>
+                    <ComboBoxItem Content="Vitamina / Supliment"/>
+                    <ComboBoxItem Content="Dermatologic"/>
+                    <ComboBoxItem Content="Alt tip"/>
+                </ComboBox>
+
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Pret (RON) *" Style="{StaticResource Label}"/>
+                        <TextBox x:Name="TxtPret" Style="{StaticResource Camp}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Stoc (buc) *" Style="{StaticResource Label}"/>
+                        <TextBox x:Name="TxtStoc" Style="{StaticResource Camp}"/>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="Data expirare *" Style="{StaticResource Label}"/>
+                <DatePicker x:Name="DpExpirare" FontSize="13"
+                            BorderBrush="#BDBDBD" BorderThickness="1"/>
+
+                <TextBlock Text="Descriere" Style="{StaticResource Label}"/>
+                <TextBox x:Name="TxtDescriere" Style="{StaticResource Camp}"
+                         Height="65" TextWrapping="Wrap"
+                         AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Butoane -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,14,0,0">
+            <Button Content="Anuleaza" Background="#607D8B"
+                    Style="{StaticResource Btn}" Margin="0,0,10,0"
+                    Click="BtnAnuleaza_Click"/>
+            <Button Content="Salveaza" Background="#2E7D32"
+                    Style="{StaticResource Btn}"
+                    Click="BtnSalveaza_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
