@@ -1,7 +1,7 @@
 ﻿<Window x:Class="AplicatieFarmacie.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Farmacia Verde â€” Gestiune Medicamente"
+        Title="Farmacia Verde - Gestiune Medicamente"
         Height="660" Width="1020"
         WindowStartupLocation="CenterScreen"
         Background="#F0F4F0">

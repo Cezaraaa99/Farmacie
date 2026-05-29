@@ -1,4 +1,5 @@
 ﻿using System;
+using ModeleDateFarmacie;
 
 namespace ModeleDateFarmacie
 {
@@ -7,11 +8,7 @@ namespace ModeleDateFarmacie
         public int Id { get; set; }
         public string Denumire { get; set; }
         public string Producator { get; set; }
-<<<<<<< HEAD
         public CategorieMedicament Categorie { get; set; }
-=======
-        public string Categorie { get; set; }
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
         public double Pret { get; set; }
         public int Stoc { get; set; }
         public DateTime DataExpirare { get; set; }
@@ -19,13 +16,8 @@ namespace ModeleDateFarmacie
 
         public Medicament() { }
 
-<<<<<<< HEAD
         public Medicament(int id, string denumire, string producator, CategorieMedicament categorie,
-                  double pret, int stoc, DateTime dataExpirare, string descriere)
-=======
-        public Medicament(int id, string denumire, string producator, string categorie,
                           double pret, int stoc, DateTime dataExpirare, string descriere)
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
         {
             Id = id;
             Denumire = denumire;

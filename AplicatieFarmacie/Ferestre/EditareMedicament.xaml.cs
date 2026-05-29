@@ -22,11 +22,7 @@ namespace AplicatieFarmacie.Ferestre
             TxtIdInfo.Text = $"ID medicament: {m.Id}";
             TxtDenumire.Text = m.Denumire;
             TxtProducator.Text = m.Producator;
-<<<<<<< HEAD
-            CmbCategorie.Text = m.Categorie.ToString();
-=======
-            CmbCategorie.Text = m.Categorie;
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
+            CmbCategorie.Text = m.Categorie.ToString(); // enum -> string pentru afisare
             TxtPret.Text = m.Pret.ToString("F2");
             TxtStoc.Text = m.Stoc.ToString();
             DpExpirare.SelectedDate = m.DataExpirare;
@@ -37,18 +33,15 @@ namespace AplicatieFarmacie.Ferestre
         {
             if (!ValidareFormular()) return;
 
+            CategorieMedicament categorie = Enum.TryParse(CmbCategorie.Text.Trim(), out CategorieMedicament cat)
+                ? cat : CategorieMedicament.AltTip;
+
             MedicamentEditat = new Medicament
             {
                 Id = _idOriginal,
                 Denumire = TxtDenumire.Text.Trim(),
                 Producator = TxtProducator.Text.Trim(),
-<<<<<<< HEAD
-                Categorie = Enum.TryParse(CmbCategorie.Text.Trim(), out CategorieMedicament cat)
-             ? cat : CategorieMedicament.AltTip,
-=======
-                Categorie = (CmbCategorie.SelectedItem as ComboBoxItem)?.Content?.ToString()
-                             ?? CmbCategorie.Text.Trim(),
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
+                Categorie = categorie,
                 Pret = double.Parse(TxtPret.Text.Trim().Replace(',', '.'),
                        System.Globalization.CultureInfo.InvariantCulture),
                 Stoc = int.Parse(TxtStoc.Text.Trim()),
@@ -70,30 +63,20 @@ namespace AplicatieFarmacie.Ferestre
         {
             if (string.IsNullOrWhiteSpace(TxtDenumire.Text))
             { Eroare("Campul Denumire este obligatoriu."); return false; }
-
             if (string.IsNullOrWhiteSpace(TxtProducator.Text))
             { Eroare("Campul Producator este obligatoriu."); return false; }
-
             if (string.IsNullOrWhiteSpace(CmbCategorie.Text))
             { Eroare("Selectati sau introduceti o categorie."); return false; }
-
             if (!double.TryParse(TxtPret.Text.Trim().Replace(',', '.'),
                 System.Globalization.NumberStyles.Any,
                 System.Globalization.CultureInfo.InvariantCulture, out double pret) || pret < 0)
             { Eroare("Pretul trebuie sa fie un numar pozitiv."); return false; }
-
             if (!int.TryParse(TxtStoc.Text.Trim(), out int stoc) || stoc < 0)
             { Eroare("Stocul trebuie sa fie un numar intreg pozitiv."); return false; }
-
             if (!DpExpirare.SelectedDate.HasValue)
             { Eroare("Selectati data de expirare."); return false; }
-
-<<<<<<< HEAD
             if (DpExpirare.SelectedDate.Value.Date <= DateTime.Today)
-            { Eroare("Medicamentul este expirat. Data de expirare trebuie sa fie dupa data de astazi."); return false; }
-
-=======
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
+            { Eroare("Data de expirare trebuie sa fie dupa data de astazi."); return false; }
             return true;
         }
 
@@ -103,7 +86,3 @@ namespace AplicatieFarmacie.Ferestre
         }
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
