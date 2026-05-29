@@ -9,7 +9,11 @@ using AplicatieFarmacie.Ferestre;
 
 namespace AplicatieFarmacie
 {
+<<<<<<< HEAD
     public partial class MainWindow : Window //constructor
+=======
+    public partial class MainWindow : Window
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
     {
         private readonly DepozitMedicamente _depozit;
         private DispatcherTimer _timerCeas;
@@ -62,7 +66,11 @@ namespace AplicatieFarmacie
             if (m == null) { CurataDetalii(); return; }
             DetDenumire.Text = m.Denumire;
             DetProducator.Text = m.Producator;
+<<<<<<< HEAD
             DetCategorie.Text = m.Categorie.ToString();
+=======
+            DetCategorie.Text = m.Categorie;
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
             DetPret.Text = $"{m.Pret:F2} RON";
             DetStoc.Text = $"{m.Stoc} bucati";
             DetExpirare.Text = m.DataExpirare.ToString("dd MMMM yyyy");

@@ -22,7 +22,11 @@ namespace AplicatieFarmacie.Ferestre
             TxtIdInfo.Text = $"ID medicament: {m.Id}";
             TxtDenumire.Text = m.Denumire;
             TxtProducator.Text = m.Producator;
+<<<<<<< HEAD
             CmbCategorie.Text = m.Categorie.ToString();
+=======
+            CmbCategorie.Text = m.Categorie;
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
             TxtPret.Text = m.Pret.ToString("F2");
             TxtStoc.Text = m.Stoc.ToString();
             DpExpirare.SelectedDate = m.DataExpirare;
@@ -38,8 +42,13 @@ namespace AplicatieFarmacie.Ferestre
                 Id = _idOriginal,
                 Denumire = TxtDenumire.Text.Trim(),
                 Producator = TxtProducator.Text.Trim(),
+<<<<<<< HEAD
                 Categorie = Enum.TryParse(CmbCategorie.Text.Trim(), out CategorieMedicament cat)
              ? cat : CategorieMedicament.AltTip,
+=======
+                Categorie = (CmbCategorie.SelectedItem as ComboBoxItem)?.Content?.ToString()
+                             ?? CmbCategorie.Text.Trim(),
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
                 Pret = double.Parse(TxtPret.Text.Trim().Replace(',', '.'),
                        System.Globalization.CultureInfo.InvariantCulture),
                 Stoc = int.Parse(TxtStoc.Text.Trim()),
@@ -79,9 +88,12 @@ namespace AplicatieFarmacie.Ferestre
             if (!DpExpirare.SelectedDate.HasValue)
             { Eroare("Selectati data de expirare."); return false; }
 
+<<<<<<< HEAD
             if (DpExpirare.SelectedDate.Value.Date <= DateTime.Today)
             { Eroare("Medicamentul este expirat. Data de expirare trebuie sa fie dupa data de astazi."); return false; }
 
+=======
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
             return true;
         }
 
@@ -91,4 +103,7 @@ namespace AplicatieFarmacie.Ferestre
         }
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 55f6bdafb1d17bd3a1450fa2e20b803810276910
